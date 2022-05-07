@@ -4,8 +4,9 @@
 const Model = use('Model')
 
 class Request extends Model {
+    //populates the request_ques table
     static get table() {
-        return 'request_ques' // or whatever your name is
+        return 'request_ques'
       }
 }
 
