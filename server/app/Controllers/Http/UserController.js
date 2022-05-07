@@ -1,6 +1,7 @@
 'use strict'
 
 const User = use('App/Models/User');
+const Request = use('App/Models/Request');
 class UserController {
     //Login method
     async login({request, auth }) {
@@ -11,18 +12,17 @@ class UserController {
 
     //Register method
     async register({request}) {
-        const {email, username, password, role} = request.all();
-        console.log(email, username, password, role) //prints data to console
-        const user = await User.create({ //instead of creating a User, create a Request
+        const {email, username, password} = request.all();
+        console.log(email, username, password) //prints data to console
+        const userRequest = await Request.create({ //instead of creating a User, create a Request
             email,
             username, //can set this to email if we want: username: email,
             password,
-            role,
+            //role,
         });
         return{ 
-            user,
+            userRequest,
             message: 'Yup this is returning',
-            //this.login(...arguments) || How do I get this to work?
         };
     }
 }
