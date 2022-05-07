@@ -38,7 +38,7 @@ Route.group(() => {
   //Routes ROOT can access  
   Route.group(() => {
     Route.get("/requests", "ApprovalController.listRequests"); //Endpoint to grab list of requests
-    Route.post("/approval", "ApprovalController.approveRegistration"); //Endpoint to post approve/deny requests
+    Route.post("/approval/:id", "ApprovalController.approveRegistration"); //Endpoint to post approve/deny requests
     Route.post("/assistant/setup", "AssistantController.setup"); //check what route.xxx should be
   }).middleware("auth", "root")
     .prefix('api/v0');  
