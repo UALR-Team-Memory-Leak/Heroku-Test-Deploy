@@ -2,6 +2,7 @@
 
 const User = use('App/Models/User');
 const Request = use('App/Models/Request');
+
 class UserController {
     //Login method
     async login({request, auth }) {
