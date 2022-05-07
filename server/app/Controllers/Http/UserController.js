@@ -13,7 +13,7 @@ class UserController {
     async register({request}) {
         const {email, username, password, role} = request.all();
         console.log(email, username, password, role) //prints data to console
-        const user = await User.create({
+        const user = await User.create({ //instead of creating a User, create a Request
             email,
             username, //can set this to email if we want: username: email,
             password,
@@ -22,6 +22,7 @@ class UserController {
         return{ 
             user,
             message: 'Yup this is returning',
+            //this.login(...arguments) || How do I get this to work?
         };
     }
 }

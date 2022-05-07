@@ -11,7 +11,7 @@ class UserSchema extends Schema {
       table.string('email', 254).notNullable().unique()
       table.string('password', 60).notNullable()
       //todo: move role assignment to ROOT_USER only when approving register requests
-      table.string('role', 4).notNullable() //putting role assignment here for now || should this .string be .int???
+      table.int('role', 4).notNullable() //putting role assignment here for now
       table.timestamps()
     })
   }

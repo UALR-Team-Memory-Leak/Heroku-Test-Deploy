@@ -16,13 +16,28 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+//All users can use these controllers
 Route.group(() => {
   Route.post('auth/register', 'UserController.register');
   Route.post('auth/login', 'UserController.login');
-
-  //middleware function below allows us to parse a JWT token from the request
-  Route.get('projects', 'ProjectController.index').middleware('auth'); //authenticates JWT token before running controller
-  Route.post('projects', 'ProjectController.create').middleware('auth');
-  Route.delete('projects/:id', 'ProjectController.destroy').middleware('auth');
 })
   .prefix('api/v0');
+
+  //Routes all authenticated users can access
+  Route.group(() => {
+    Route.get("/assistant", "AssistantController.generate"); //don't know what route.xxx should be
+    Route.post("/assistant", "AssistantController.edit"); //check what route.xxx should be 
+  }).middleware("auth");
+  
+  //Routes admin and root users can access
+  Route.group(() => {
+    Route.post("/assistant", "AssistantController.setup"); //check what route.xxx should be
+  }).middleware(["auth", "admin"])
+    .prefix('api/v0');
+
+  //Routes ROOT can access  
+  Route.group(() => {
+    Route.post("/approval", "ApprovalController.approval"); //check what route.xxx should be
+    Route.post("/assistant", "AssistantController.setup"); //check what route.xxx should be
+  }).middleware("root")
+    .prefix('api/v0');  
