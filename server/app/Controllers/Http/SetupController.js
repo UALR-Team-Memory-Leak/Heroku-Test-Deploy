@@ -1,12 +1,8 @@
 'use strict'
-<<<<<<< HEAD
 
-const Instructor = use('App/Modes/Instructor');
-const Request = use('App/Models/AddInstructor');
-
-=======
+const AddInstructor = use('App/Models/AddInstructor');
 const AddSection = use('App/Models/AddSection');
->>>>>>> d3f8a6e3e850395f576fbf4d60952212733639bd
+
 class SetupController {
     async setup({request}) {
         return 'Some test';
@@ -16,12 +12,12 @@ class SetupController {
     {
         const {Last_Name, Max_Course_Load} = request.all();
         console.log(Last_Name, Max_Course_Load);
-        const insertRequest = await Request.create(
+        const userIntstructor = await AddInstructor.create(
         {
             Last_Name,
             Max_Course_Load,
         });
-        return{ insertRequest, message: 'New Instructor'};  
+        return{ userIntstructor, message: 'Thank you for your input'};  
     }
 
     async addSection({request}) {
