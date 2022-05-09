@@ -11,7 +11,7 @@ class ApprovalController {
             .select('id', 'username', 'email')
         return {
             users,
-            message: 'listRequest v2 test'
+           // message: 'listRequest v2 test'
         }
     }
 

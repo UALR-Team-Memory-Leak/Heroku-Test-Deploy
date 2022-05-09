@@ -18,7 +18,7 @@ class SetupController {
                 Last_Name,
                 Max_Course_Load,
             });
-            return{ userInstructor, message: 'Thank you for your input'};  
+            return{ userInstructor, message: 'Added ' + userInstructor.Last_Name + ' to the database'};  
         }
 
     async addSection({request}) {
@@ -73,7 +73,34 @@ class SetupController {
             .where('id', params.id)
             .delete()
         console.log("The row id: "+ params.id + " has been deleted.")
-        return{message: "The row id: "+ params.id + " has been deleted."}
+        return{message: "Section_id: "+ params.id + " has been deleted."}
+    }
+
+    async deleteInstructor({request, params}) {
+        await Database
+            .query()
+            .from('instructors')
+            .where('id', params.id)
+            .delete()
+        console.log("The row id: "+ params.id + " has been deleted.")
+        return{message: "Instructor_id: "+ params.id + " has been deleted."}
+    }
+
+    async listSections({request}) {
+        const sectionList = await Database
+            .query()
+            .from('sections')
+            .select('*')
+        return sectionList;
+    }
+
+    
+    async listInstructors({request}) {
+        const instructorList = await Database
+            .query()
+            .from('instructors')
+            .select('*')
+        return instructorList;
     }
 }
 
