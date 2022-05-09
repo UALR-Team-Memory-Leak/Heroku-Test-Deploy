@@ -14,12 +14,12 @@ class SetupController {
         const {Last_Name, Max_Course_Load} = request.all();
         console.log(Last_Name, Max_Course_Load);
         const userIntstructor = await AddInstructor.create(
-        {
-            Last_Name,
-            Max_Course_Load,
-        });
-        return{ userIntstructor, message: 'Thank you for your input'};  
-    }
+            {
+                Last_Name,
+                Max_Course_Load,
+            });
+            return{ userIntstructor, message: 'Thank you for your input'};  
+        }
 
     async addSection({request}) {
         const {
@@ -65,7 +65,7 @@ class SetupController {
             message: 'Thank you for your input',
         };
     }
-  
+
   async deleteSection({request, params}) {
         await Database
             .query()
