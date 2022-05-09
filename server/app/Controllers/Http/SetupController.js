@@ -13,12 +13,12 @@ class SetupController {
     {
         const {Last_Name, Max_Course_Load} = request.all();
         console.log(Last_Name, Max_Course_Load);
-        const userIntstructor = await AddInstructor.create(
+        const userInstructor = await AddInstructor.create(
             {
                 Last_Name,
                 Max_Course_Load,
             });
-            return{ userIntstructor, message: 'Thank you for your input'};  
+            return{ userInstructor, message: 'Thank you for your input'};  
         }
 
     async addSection({request}) {
