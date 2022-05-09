@@ -1,2 +1,4 @@
-# AdonisTestApp-v3
-Testing third type of auth
+# ADTAA
+Academic Department Teaching Assignments Assistant
+
+For Capstone
