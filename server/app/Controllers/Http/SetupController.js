@@ -15,7 +15,7 @@ class SetupController {
         const {Last_Name, Max_Course_Load} = request.all();
         console.log(Last_Name, Max_Course_Load);
 
-        const userIntstructor = await AddInstructor.create(
+        const userInstructor = await AddInstructor.create(
         {
             Last_Name,
             Max_Course_Load,
@@ -28,7 +28,7 @@ class SetupController {
             Instructor_ID : userIntstructor.id, Discipline_ID 
         });
 
-        return{ userIntstructor, userDisciplineArea,  message: 'Thank you for your input'};  
+        return{ userInstructor, userDisciplineArea,  message: 'Thank you for your input'};  
     }
 
     async deleteInstructor({request})
