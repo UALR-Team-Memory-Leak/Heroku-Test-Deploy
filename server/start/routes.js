@@ -16,6 +16,11 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+//Dev requests for importing test data
+Route.post('import','ImportController.import')
+Route.post('import/multi','ImportMultiController.importMulti')
+Route.post('auth/dev-register', 'UserController.devRegister')
+
 //All users can use these controllers
 Route.group(() => {
   Route.post('auth/register', 'UserController.register');
