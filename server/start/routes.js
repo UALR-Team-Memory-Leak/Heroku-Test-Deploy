@@ -37,6 +37,8 @@ Route.group(() => {
   
   //Routes admin and root users can access
   Route.group(() => {
+    Route.post("/setup/addInstructor", "SetupController.addInstructor");
+    Route.post("/setup/addSection", "SetupController.addSection");
     Route.post("/setup/add", "SetupController.setup"); //check what route.xxx should be
   }).middleware(["auth", "admin"])
     .prefix('api/v0');
