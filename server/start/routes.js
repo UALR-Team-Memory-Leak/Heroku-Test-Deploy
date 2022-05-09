@@ -53,4 +53,4 @@ Route.group(() => {
     Route.post("/approval/:id", "ApprovalController.approveRegistration"); //Endpoint to post approve/deny requests
     Route.post("/setup/root-add", "SetupController.setup"); //check what route.xxx should be
   }).middleware("auth", "root")
-    .prefix('api/v0');  
+    .prefix('api/v0');
