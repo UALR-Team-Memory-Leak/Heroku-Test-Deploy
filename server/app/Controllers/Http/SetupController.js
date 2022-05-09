@@ -20,7 +20,7 @@ class SetupController {
             });
             return{ userIntstructor, message: 'Thank you for your input'};  
         }
-    
+
     async addSection({request}) {
         const {
             Course_Reference_Number, 
@@ -66,7 +66,7 @@ class SetupController {
         };
     }
 
-    async deleteSection({request, params}) {
+  async deleteSection({request, params}) {
         await Database
             .query()
             .from('sections')
