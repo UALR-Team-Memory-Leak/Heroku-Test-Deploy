@@ -5,8 +5,9 @@ class SetupController {
         return 'Some test';
     }
 
-    async addInstructor({request}) {
-
+    async addInstructor({request}) 
+    {
+        
     }
 
     async addSection({}) {
