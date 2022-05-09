@@ -16,10 +16,12 @@ class SetupController {
         console.log(Last_Name, Max_Course_Load);
 
         const userInstructor = await AddInstructor.create(
-        {
-            Last_Name,
-            Max_Course_Load,
-        });
+
+            {
+                Last_Name,
+                Max_Course_Load,
+            });
+            //return{ userInstructor, message: 'Added ' + userInstructor.Last_Name + ' to the database'};
 
         const{Discipline_ID} = request.all();
         console.log(Discipline_ID);
@@ -29,12 +31,6 @@ class SetupController {
         });
 
         return{ userInstructor, userDisciplineArea,  message: 'Thank you for your input'};  
-    }
-
-    async deleteInstructor({request})
-    {
-        
-    }
 
     async addSection({request}) {
         const {
@@ -88,7 +84,34 @@ class SetupController {
             .where('id', params.id)
             .delete()
         console.log("The row id: "+ params.id + " has been deleted.")
-        return{message: "The row id: "+ params.id + " has been deleted."}
+        return{message: "Section_id: "+ params.id + " has been deleted."}
+    }
+
+    async deleteInstructor({request, params}) {
+        await Database
+            .query()
+            .from('instructors')
+            .where('id', params.id)
+            .delete()
+        console.log("The row id: "+ params.id + " has been deleted.")
+        return{message: "Instructor_id: "+ params.id + " has been deleted."}
+    }
+
+    async listSections({request}) {
+        const sectionList = await Database
+            .query()
+            .from('sections')
+            .select('*')
+        return sectionList;
+    }
+
+    
+    async listInstructors({request}) {
+        const instructorList = await Database
+            .query()
+            .from('instructors')
+            .select('*')
+        return instructorList;
     }
 }
 
