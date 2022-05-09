@@ -1,7 +1,6 @@
 'use strict'
 
-const Instructor = use('App/Modes/Instructor');
-const Request = use('App/Models/AddInstructor');
+const AddInstructor = use('App/Models/AddInstructor');
 const AddSection = use('App/Models/AddSection');
 const Database = use('Database')
 
@@ -14,14 +13,14 @@ class SetupController {
     {
         const {Last_Name, Max_Course_Load} = request.all();
         console.log(Last_Name, Max_Course_Load);
-        const insertRequest = await Request.create(
-        {
-            Last_Name,
-            Max_Course_Load,
-        });
-        return{ insertRequest, message: 'New Instructor'};  
-    }
-
+        const userIntstructor = await AddInstructor.create(
+            {
+                Last_Name,
+                Max_Course_Load,
+            });
+            return{ userIntstructor, message: 'Thank you for your input'};  
+        }
+    
     async addSection({request}) {
         const {
             Course_Reference_Number, 
