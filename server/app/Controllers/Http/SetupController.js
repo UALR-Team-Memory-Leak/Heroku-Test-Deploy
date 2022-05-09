@@ -1,6 +1,7 @@
 'use strict'
 
 const AddInstructor = use('App/Models/AddInstructor');
+
 const AddSection = use('App/Models/AddSection');
 const Database = use('Database')
 
@@ -18,8 +19,18 @@ class SetupController {
                 Last_Name,
                 Max_Course_Load,
             });
-            return{ userInstructor, message: 'Added ' + userInstructor.Last_Name + ' to the database'};  
-        }
+            //return{ userInstructor, message: 'Added ' + userInstructor.Last_Name + ' to the database'};
+        const{Discipline_ID} = request.all();
+        console.log(Discipline_ID);
+        const userDisciplineArea = await AddDisciplineArea.create(
+        {
+            Instructor_ID : userIntstructor.id, Discipline_ID 
+        });
+
+        return{ userInstructor, userDisciplineArea,  message: 'Thank you for your input'};  
+    }  
+        
+    
 
     async addSection({request}) {
         const {
