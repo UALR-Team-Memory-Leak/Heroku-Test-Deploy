@@ -12,3 +12,4 @@ class AddDisciplineArea extends Model
 }
 
 module.exports = AddDisciplineArea
+
