@@ -36,7 +36,7 @@ Route.group(() => {
   
   //Routes admin and root users can access
   Route.group(() => {
-    Route.post("/assistant/setup", "AssistantController.setup"); //check what route.xxx should be
+    Route.post("/setup/add", "SetupController.setup"); //check what route.xxx should be
   }).middleware(["auth", "admin"])
     .prefix('api/v0');
 
@@ -44,6 +44,6 @@ Route.group(() => {
   Route.group(() => {
     Route.get("/requests", "ApprovalController.listRequests"); //Endpoint to grab list of requests
     Route.post("/approval/:id", "ApprovalController.approveRegistration"); //Endpoint to post approve/deny requests
-    Route.post("/assistant/setup", "AssistantController.setup"); //check what route.xxx should be
+    Route.post("/setup/root-add", "SetupController.setup"); //check what route.xxx should be
   }).middleware("auth", "root")
     .prefix('api/v0');  
