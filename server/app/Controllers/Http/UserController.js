@@ -19,7 +19,6 @@ class UserController {
             email,
             username, //can set this to email if we want: username: email,
             password,
-            //role,
         });
         return{ 
             userRequest,
