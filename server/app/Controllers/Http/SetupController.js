@@ -2,6 +2,7 @@
 
 const AddInstructor = use('App/Models/AddInstructor');
 const AddSection = use('App/Models/AddSection');
+const Database = use('Database')
 
 class SetupController {
     async setup({request}) {
@@ -63,7 +64,16 @@ class SetupController {
             userSection,
             message: 'Thank you for your input',
         };
-
+    }
+  
+  async deleteSection({request, params}) {
+        await Database
+            .query()
+            .from('sections')
+            .where('id', params.id)
+            .delete()
+        console.log("The row id: "+ params.id + " has been deleted.")
+        return{message: "The row id: "+ params.id + " has been deleted."}
     }
 }
 
