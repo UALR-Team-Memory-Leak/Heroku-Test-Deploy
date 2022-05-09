@@ -40,6 +40,7 @@ Route.group(() => {
     Route.post("/setup/add", "SetupController.setup"); //check what route.xxx should be
     Route.post("/setup/addInstructor", "SetupController.addInstructor");
     Route.post("/setup/addSection", "SetupController.addSection");
+    Route.post("/setup/delete/:id", "SetupController.deleteSection");
   }).middleware(["auth", "admin"])
     .prefix('api/v0');
 
