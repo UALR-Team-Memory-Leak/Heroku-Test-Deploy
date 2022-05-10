@@ -54,9 +54,9 @@
   </tbody>
 </table>
            <div class="my-3">
-               <router-link class="nav-link" to="/homepage">
+               <!--<router-link class="nav-link" to="/homepage">-->
                <login-button type="submit" class="btn btn-primary" buttonText="select"></login-button>
-           </router-link>
+           <!--</router-link>-->
            </div>
        </form>
     </div>

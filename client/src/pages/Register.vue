@@ -34,6 +34,7 @@
 </template>
 <script>
 import LoginValidations from '../services/LoginValidations';
+import axios from "axios";
 export default {
   data() {
       return {
@@ -44,17 +45,35 @@ export default {
   },
   methods: {
       onRegister() {
-          let validations = new LoginValidations(
-              this.email,
-              this.username, 
-              this.password,
-              );
-
-            this.errors = validations.checkValidations();
-            if ('email' in this.errors || 'password' in this.errors || 'username' in this.errors) {
-                return false;
-            }
-      }
-  }
+          axios.post(
+              'http://localhost:3333/api/v0/auth/register',
+              {email: this.email, username:this.username, password: this.password}
+          ).then((response) => {
+              console.log(response);
+          });
+      },
+    // onLogin() {
+    //       console.log('onLogin called')
+    //        axios.get('http://jsonplaceholder.typicode.com/posts').then((response) => {
+    //         console.log(response)
+    //        })
+    //         // axios.post('http://localhost:3333/auth/register', {
+    //         //         "email": "testemail4@test.com",
+    //         //         "password": "password4"
+    //         //     }
+    //         // ).then(response => {
+    //         //     console.log(response)
+    //         // })
+    //     //   let validations = new LoginValidations(
+    //     //       this.username, 
+    //     //       this.password,
+    //     //       );
+    //     //     this.errors = validations.checkValidations();
+    //     //     if ('emails' in this.errors || 'password' in this.errors) {
+    //     //         return false;
+    //     //     }
+    //     // console.log('here')
+    //   },
+  },
 }
 </script>

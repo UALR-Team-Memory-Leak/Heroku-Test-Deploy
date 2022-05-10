@@ -7,7 +7,7 @@
             <h3>Login</h3>
             <hr />
         </div>
-       <form @submit.prevent="onLogin()">
+       <form @submit.prevent="onLogin">
            <div class="form-group">
                <label>Email</label>
                <input type="text" class="form-control" v-model="email" />
@@ -18,11 +18,8 @@
                <input type="password" class="form-control" v-model="password" />
                <div class="error" v-if="errors.password">{{errors.password}}</div>
            </div>
-
            <div class="my-3">
-               <router-link class="nav-link" to="/homepage">
                <login-button type="submit" class="btn btn-primary" buttonText="Login"></login-button>
-                </router-link>
            </div>
        </form>
     </div>
@@ -33,13 +30,17 @@
 import LoginValidations from '../services/LoginValidations';
 import LoginButton from '../components/LogButton.vue';
 //import UserController from '../server/app/Controllers/Http/UserController';
-
+import axios from "axios";
 export default {
     name: "Login",
     components: {
         LoginButton,
     },
   data() {
+//       console.log('getting data')
+//       axios.get('http://jsonplaceholder.typicode.com/posts').then((response) => {
+//   console.log(response)
+// })
       return {
           email: '',
           password: '',
@@ -48,16 +49,36 @@ export default {
   },
   methods: {
       onLogin() {
-          let validations = new LoginValidations(
-              this.username, 
-              this.password,
-              );
-
-            this.errors = validations.checkValidations();
-            if ('emails' in this.errors || 'password' in this.errors) {
-                return false;
-            }
+          axios.post(
+              //'http://jsonplaceholder.typicode.com/posts',
+               'http://localhost:3333/api/v0/auth/login',
+              {email: this.email, password: this.password}
+          ).then((response) => {
+              console.log(response);
+          });
       },
+    // onLogin() {
+    //       console.log('onLogin called')
+    //        axios.get('http://jsonplaceholder.typicode.com/posts').then((response) => {
+    //         console.log(response)
+    //        })
+    //         // axios.post('http://localhost:3333/auth/register', {
+    //         //         "email": "testemail4@test.com",
+    //         //         "password": "password4"
+    //         //     }
+    //         // ).then(response => {
+    //         //     console.log(response)
+    //         // })
+    //     //   let validations = new LoginValidations(
+    //     //       this.username, 
+    //     //       this.password,
+    //     //       );
+    //     //     this.errors = validations.checkValidations();
+    //     //     if ('emails' in this.errors || 'password' in this.errors) {
+    //     //         return false;
+    //     //     }
+    //     // console.log('here')
+    //   },
   },
 };
 </script>

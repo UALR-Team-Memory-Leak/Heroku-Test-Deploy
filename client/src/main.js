@@ -6,7 +6,6 @@ import LoginValidations from './services/LoginValidations';
 import store from './store/store';
 //import UserController from '../server/app/Controllers/Http/UserController';
 
-
 const app= createApp(App);
 //sync(store. router);
 app.use(router);
