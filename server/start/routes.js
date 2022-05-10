@@ -20,6 +20,7 @@ const Route = use('Route')
 Route.post('import','ImportController.import')
 Route.post('import/multi','ImportMultiController.importMulti')
 Route.post('auth/dev-register', 'UserController.devRegister')
+Route.get("/requests", "ApprovalController.listRequests");//delete this later
 
 //All users can use these controllers
 Route.group(() => {
@@ -49,7 +50,7 @@ Route.group(() => {
 
   //Routes ROOT can access  
   Route.group(() => {
-    Route.get("/requests", "ApprovalController.listRequests"); //Endpoint to grab list of requests
+    //Route.get("/requests", "ApprovalController.listRequests"); //Endpoint to grab list of requests
     Route.post("/approval/:id", "ApprovalController.approveRegistration"); //Endpoint to post approve/deny requests
     Route.post("/setup/root-add", "SetupController.setup"); //check what route.xxx should be
   }).middleware("auth", "root")

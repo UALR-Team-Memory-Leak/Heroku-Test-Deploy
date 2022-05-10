@@ -50,8 +50,25 @@ export default {
               {email: this.email, password: this.password}
           ).then((response) => {
               console.log(response);
+              localStorage.setItem('projectToken', response.token);
+
+            let token = response.data.access;
+            localStorage.setItem("SavedToken", 'Bearer ' + token);
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+            (this.$router.push({path:'./homepage'}));
+            console.log("this is the token "+token)
+            console.log(localStorage)
+            //console.log(localStorage.getItem("this is in local storage "+ "SavedToken"))
           });
       },
+            
+
+//         token = localStorage.getItem('projectToken'),
+       
+//         if (!token) {
+//   // navigate to login page
+        
+//        }
     // onLogin() {
     //       console.log('onLogin called')
     //        axios.get('http://jsonplaceholder.typicode.com/posts').then((response) => {

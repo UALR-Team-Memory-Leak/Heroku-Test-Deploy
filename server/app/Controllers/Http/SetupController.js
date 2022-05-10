@@ -101,7 +101,8 @@ class SetupController {
         const sectionList = await Database
             .query()
             .from('sections')
-            .select('*')
+            .select('Course_Reference_Number', 'Section_Number','Meeting_Period_1_Days','Meeting_Period_1_Start','Meeting_Period_1_End',
+            'Meeting_Period_2_Days','Meeting_Period_2_Start','Meeting_Period_2_End','Meeting_Period_3_Days','Meeting_Period_3_Start','Meeting_Period_3_End')
         return sectionList;
     }
 
@@ -110,7 +111,7 @@ class SetupController {
         const instructorList = await Database
             .query()
             .from('instructors')
-            .select('*')
+            .select('id', 'Last_Name', 'Max_Course_Load')
         return instructorList;
     }
 }
