@@ -40,8 +40,8 @@ Route.group(() => {
     Route.post("/setup/add", "SetupController.setup"); //check what route.xxx should be
     Route.post("/setup/addInstructor", "SetupController.addInstructor");
     Route.post("/setup/addSection", "SetupController.addSection");
-    Route.post("/setup/delete-section/:id", "SetupController.deleteSection");
-    Route.post("/setup/delete-instructor/:id", "SetupController.deleteInstructor");
+    Route.delete("/setup/delete-section/:id", "SetupController.deleteSection");
+    Route.delete("/setup/delete-instructor/:id", "SetupController.deleteInstructor");
     Route.get("/setup/sections/", "SetupController.listSections");
     Route.get("/setup/instructors/", "SetupController.listInstructors");
   }).middleware(["auth", "admin"])
