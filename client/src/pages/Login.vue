@@ -37,10 +37,6 @@ export default {
         LoginButton,
     },
   data() {
-//       console.log('getting data')
-//       axios.get('http://jsonplaceholder.typicode.com/posts').then((response) => {
-//   console.log(response)
-// })
       return {
           email: '',
           password: '',
@@ -50,7 +46,6 @@ export default {
   methods: {
       onLogin() {
           axios.post(
-              //'http://jsonplaceholder.typicode.com/posts',
                'http://localhost:3333/api/v0/auth/login',
               {email: this.email, password: this.password}
           ).then((response) => {
