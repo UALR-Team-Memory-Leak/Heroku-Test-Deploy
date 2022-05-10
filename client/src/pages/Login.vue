@@ -49,15 +49,19 @@ export default {
                'http://localhost:3333/api/v0/auth/login',
               {email: this.email, password: this.password}
           ).then((response) => {
-              console.log(response);
-              localStorage.setItem('projectToken', response.token);
+                console.log(response);
+                //localStorage.setItem('projectToken', response.token);
+                if (response.data.accessToken) {
+                    localStorage.setItem('user', JSON.stringify(response.data));
+                }
+                return response.data;
 
-            let token = response.data.access;
-            localStorage.setItem("SavedToken", 'Bearer ' + token);
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-            (this.$router.push({path:'./homepage'}));
-            console.log("this is the token "+token)
-            console.log(localStorage)
+            // let token = response.data.access;
+            // localStorage.setItem("SavedToken", 'Bearer ' + token);
+            // axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+            // (this.$router.push({path:'./homepage'}));
+            // console.log("this is the token "+token)
+            // console.log(localStorage)
             //console.log(localStorage.getItem("this is in local storage "+ "SavedToken"))
           });
       },
